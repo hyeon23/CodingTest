@@ -1,41 +1,45 @@
-﻿#include <iostream>
+﻿#include <stdio.h>
 
-using namespace std;
+typedef struct _tagMyType {
+	//너무 방대한 구조체
+	int a;
+	int b;
+	//...
+	int zzz;
+}MyType;
 
-#define MOD 10007
+void Output(const int* pI) {
+	int i = *pI;
 
-int main()
-{
-    int N;
-    int sum = 0;
-    int arr[1001][10] = { 0, };
+	//문법 파괴 가능
+	int* pInt = (int*)pI;
+	*pInt = 1000;
+}
 
-    cin >> N;
+void Output(MyType mt) {
+	int a = mt.a;
+	int b = mt.b;
+	int zzz = mt.zzz;
 
-    for (int i = 0; i < 10; i++) {
-        arr[1][i] = 1;
-    }
+	mt.a = 100;//[가능]
+}
 
-    for (int i = 2; i <= N; i++) {
-        for (int j = 0; j < 10; j++) {
-            if (j == 0) {
-                arr[i][j] = 1;
-            }
-            else {
-                arr[i][j] = arr[i - 1][j] + arr[i][j - 1];
-            }
+//void Output(const MyType mt) {
+//	int a = mt.a;
+//	int b = mt.b;
+//	int zzz = mt.zzz;
+//
+//	//mt.a = 100;//[컴파일에러]
+//}
 
-            arr[i][j] %= MOD;
-        }
-    }
+int main() {
 
-    for (int i = 0; i < 10; i++) {
-        sum += arr[N][i];
-    }
+	int a = 0;
+	const int* pInt = &a;
 
-    sum %= MOD;
+	a = 100;
+	Output(&a);
+	printf("%d", a);
 
-    cout << sum << endl;
-
-    return 0;
+	return 0;
 }
