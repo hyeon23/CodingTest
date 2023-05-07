@@ -129,14 +129,18 @@
   <ItemGroup>
     <ClInclude Include="Arr.h" />
     <ClInclude Include="CArray.h" />
+    <ClInclude Include="CLinkedList.h" />
     <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arr.cpp" />
     <ClCompile Include="CArray.cpp" />
-    <ClCompile Include="ClassArrayMain.cpp" />
+    <ClCompile Include="CArrayMain.cpp" />
+    <ClCompile Include="CLinkedList.cpp" />
+    <ClCompile Include="CLinkedListMain.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="LinkedListMain.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

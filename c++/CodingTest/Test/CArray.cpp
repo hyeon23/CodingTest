@@ -40,6 +40,17 @@ void CArray::resize(int _iDataCount)
 	m_iMaxCount = _iDataCount;
 }
 
+//레퍼런스 전달의 효율
+//반환 타입이 레퍼런스라는 의미
+//즉시 수정 & 값 전달이 가능해짐
+int& CArray::operator[](int idx)
+{
+	//C Style
+	//return (m_pInt + idx);
+	//C++ Style
+	return m_pInt[idx];
+}
+
 //클래스 선언 범위 밖이기 때문에, 이렇게 범위를 지정해준다.
 CArray::CArray()
 //initializer를 선언 순서대로 초기화해주는 것이 무조건 좋음
