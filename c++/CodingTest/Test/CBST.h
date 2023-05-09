@@ -17,7 +17,7 @@ struct tPair
 
 template<typename T1, typename T2>
 tPair<T1, T2> make_bstpair(const T1& _first, const T2& _second) {
-	return tPair<T1, T2> pair{ _first, _second };
+	return tPair<T1, T2>{ _first, _second };
 }
 
 template<typename T1, typename T2>
@@ -26,7 +26,6 @@ struct tBSTNode {
 	//data[Parir]
 	tPair<T1, T2> pair;
 
-	
 	////ParentPtr
 	//tBSTNode* pParent;
 	////leftChildPtr
@@ -77,7 +76,7 @@ public:
 
 	}
 
-	tBSTNode(tPair<T1, T2>& _pair tBSTNode* _pParent, tBSTNode* _pLChild, tBSTNode* _pRChild)
+	tBSTNode(tPair<T1, T2>& _pair, tBSTNode* _pParent, tBSTNode* _pLChild, tBSTNode* _pRChild)
 		: pair(_pair)
 		, arrNode{ _pParent , _pLChild, _pRChild }
 	{
@@ -303,7 +302,7 @@ inline tBSTNode<T1, T2>* CBST<T1, T2>::GetInOrderPredecessor(tBSTNode<T1, T2>* _
 }
 
 template<typename T1, typename T2>
-inline CBST<T1, T2>::iterator CBST<T1, T2>::begin()
+inline typename CBST<T1, T2>::iterator CBST<T1, T2>::begin()
 {
 	//BST는 결국 Root밖에 모름
 	//더이상 왼쪽이 없을 때까지
@@ -319,7 +318,7 @@ inline CBST<T1, T2>::iterator CBST<T1, T2>::begin()
 }
 
 template<typename T1, typename T2>
-inline CBST<T1, T2>::iterator CBST<T1, T2>::end()
+inline typename CBST<T1, T2>::iterator CBST<T1, T2>::end()
 {
 	//BST는 결국 Root밖에 모름
 	//nullptr을 가르켜야 함
@@ -328,7 +327,7 @@ inline CBST<T1, T2>::iterator CBST<T1, T2>::end()
 }
 
 template<typename T1, typename T2>
-inline CBST<T1, T2>::iterator CBST<T1, T2>::find(const T1& _key)
+inline typename CBST<T1, T2>::iterator CBST<T1, T2>::find(const T1& _key)
 {
 	tBSTNode<T1, T2>* pNode = m_pRoot;
 	NODE_TYPE node_type = NODE_TYPE::END;
@@ -428,7 +427,7 @@ inline tBSTNode<T1, T2>* CBST<T1, T2>::DeleteNode(tBSTNode<T1, T2>* _pTargetNode
 				_pTargetNode->arrNode[(int)NODE_TYPE::PARENT]->arrNode[(int)NODE_TYPE::RCHILD] = _pTargetNode->arrNode[(int)eChildType];
 			}
 
-			_pTargetNode->arrNode[(int)eChildType]->arrNode[(int)NODE_TYPE::PARENT] = _pTargetNode->arrNode[(int)NODE_TYPE::PARENT]
+			_pTargetNode->arrNode[(int)eChildType]->arrNode[(int)NODE_TYPE::PARENT] = _pTargetNode->arrNode[(int)NODE_TYPE::PARENT];
 		}
 
 		delete _pTargetNode;
