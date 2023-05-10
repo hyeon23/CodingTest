@@ -3,11 +3,16 @@
 using namespace std;
 
 int main() {
-    int A;
-    int B;
+    int T;
+    cin >> T;
 
-    cin >> A;
-    cin >> B;
-    cout << A + B;
+    for (int i = 0; i < T; i++) {
+        int A;
+        int B;
+        cin >> A;
+        cin >> B;
+
+        cout << A + B << endl;
+    }
     return 0;
 }

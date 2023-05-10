@@ -6,6 +6,7 @@ using namespace std;
 
 int main() {
 
+	//sol 1
 	int N;
 
 	int sum = 0;
@@ -17,6 +18,14 @@ int main() {
 	}
 
 	cout << sum;
+
+	//sol 2
+
+	/*int n;
+
+	cin >> n;
+
+	cout << n * (n + 1) / 2;*/
 
 	return 0;
 }
