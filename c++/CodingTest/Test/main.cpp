@@ -1,69 +1,53 @@
+#include <string.h>
 #include <iostream>
 
-class Date {
-	int year_;
-	int month_;
-	int day_;
+class Photon_Cannon {
+	int hp, sheld;
+	int coord_x, coord_y;
+	int damage;
+	char* name;
 
 public:
-	void SetDate(int year, int month, int date);
-	void AddDay(int inc);
-	void AddMonth(int inc);
-	void AddYear(int inc);
+	Photon_Cannon(int x, int y);
+	Photon_Cannon(int x, int y, const char* cannon_name);
+	~Photon_Cannon();
 
-	int GetCurrentMonthTotalDays(int year, int month);
-
-	void ShowDate();
+public:
+	void show_status();
 };
 
-void Date::SetDate(int year, int month, int day) {
-	year_ = year;
-	month_ = month;
-	day_ = day;
+Photon_Cannon::Photon_Cannon(int x, int y) {
+	hp = sheld = 100;
+	coord_x = x;
+	coord_y = y;
+	damage = 20;
+
+	name = NULL;
 }
+Photon_Cannon::Photon_Cannon(int x, int y, const char* cannon_name) {
+	hp = sheld = 100;
+	coord_x = x;
+	coord_y = y;
+	damage = 20;
 
-int Date::GetCurrentMonthTotalDays(int year, int month) {
-	static int month_day[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	if (month != 2) {
-		return month_day[month - 1];
-	}
-	else if (year % 4 == 0 && year % 100 != 0) {
-		return 29;
-	}
-	else {
-		return 28;
-	}
+	name = new char[strlen(cannon_name) + 1];
+	strcpy(name, cannon_name);
+
 }
-
-void Date::AddMonth(int inc) {
-	AddYear((inc + month_ - 1) / 12);
-	month_ = month_ + inc % 12;
-	month_ = (month_ == 12 ? 12 : month_ % 12);
+Photon_Cannon::~Photon_Cannon() {
+	if (name) delete[] name;
 }
-
-void Date::AddYear(int inc) { year_ += inc; }
-
-void Date::ShowDate() {
-	std::cout << "오늘은 " << year_ << " 년" << month_ << " 월" << day_ << "일 입니다. " << std::endl;
+void Photon_Cannon::show_status() {
+	std::cout << "Photon Cannon :: " << name << std::endl;
+	std::cout << " Location : ( " << coord_x << " , " << coord_y << " ) "
+		<< std::endl;
+	std::cout << " HP : " << hp << std::endl;
 }
-
 int main() {
-	Date day;
-	day.SetDate(2011, 3, 1);
-	day.ShowDate();
+	Photon_Cannon pc1(3, 3, "Cannon");
+	Photon_Cannon pc2 = pc1;
 
-	day.AddDay(30);
-	day.ShowDate();
-
-
-	day.AddDay(200);
-	day.ShowDate();
-
-	day.SetDate(2012, 1, 31);
-	day.AddDay(29);
-	day.ShowDate();
-
-	day.SetDate(2012, 8, 4);
-	day.AddDay(2500);
-	day.ShowDate();
+	pc1.show_status();
+	pc2.show_status();
 }
+
