@@ -8,16 +8,16 @@ int main()
 
 	cin >> N;
 
-	for (int i = 0; i < N; i++)
-	{
-		for (int k = N - 1; k > i; k--) {
+	for (int i = 0; i < N; ++i) {
+		for (int j = N - i - 1; j > 0; j--) {
 			cout << " ";
 		}
 
-		for (int j = 0; j <= i; j++)
+		for (int k = 0; k < i + 1; k++)
 		{
 			cout << "*";
 		}
+
 		cout << '\n';
 	}
 }
