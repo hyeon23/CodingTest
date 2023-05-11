@@ -1,6 +1,0 @@
-﻿  11075.cpp
-C:\hyeon\codingtest\CodingTest\c++\CodingTest\11075\11075.cpp(15,10): error C2131: 식이 상수로 계산되지 않았습니다.
-C:\hyeon\codingtest\CodingTest\c++\CodingTest\11075\11075.cpp(15,10): message : 수명을 벗어난 변수 읽기로 인해 오류가 발생했습니다.
-C:\hyeon\codingtest\CodingTest\c++\CodingTest\11075\11075.cpp(15,10): message : 'a' 사용량 참조
-C:\hyeon\codingtest\CodingTest\c++\CodingTest\11075\11075.cpp(15,6): error C2369: 'arr': 재정의. 첨자가 다릅니다.
-C:\hyeon\codingtest\CodingTest\c++\CodingTest\11075\11075.cpp(5,6): message : 'arr' 선언을 참조하십시오.

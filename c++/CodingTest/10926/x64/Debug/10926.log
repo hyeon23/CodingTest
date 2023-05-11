@@ -1,7 +1,0 @@
-﻿  10926.cpp
-C:\hyeon\codingtest\CodingTest\c++\CodingTest\10926\10926.cpp(17,5): error C2731: 'main': 함수를 오버로드할 수 없습니다.
-C:\hyeon\codingtest\CodingTest\c++\CodingTest\10926\10926.cpp(17,5): message : 'main' 선언을 참조하십시오.
-C:\hyeon\codingtest\CodingTest\c++\CodingTest\10926\10926.cpp(20,5): error C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\hyeon\codingtest\CodingTest\c++\CodingTest\10926\10926.cpp(28,5): error C2084: 'int main(int,const char *[])' 함수에 이미 본문이 있습니다.
-C:\hyeon\codingtest\CodingTest\c++\CodingTest\10926\10926.cpp(17,5): message : 'main'의 이전 정의를 참조하십시오.
-C:\hyeon\codingtest\CodingTest\c++\CodingTest\10926\10926.cpp(30,2): error C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
