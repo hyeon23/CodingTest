@@ -1,40 +1,66 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-int main(){
-    int* arr;
-    int N, M, i, j, k;
+int main()
+{
+    //바구니 야바위
 
-    cin >> N >> M;
+    //MySol
+    // int N, M, i, j, k;
 
-    arr = new int[N + 1];
+    // cin >> N >> M;
 
-    for(int i1 = 1; i1 <= N + 1; ++i1){
-        arr[i1] = i1;
+    // vector<int> buskets;
+    // vector<int> busketsTEMP;
+
+    // for (int a = 0; a < N + 1; ++a)
+    // {
+    //     buskets.push_back(a);
+    //     busketsTEMP.push_back(-1);
+    // }
+
+    // for (int a = 0; a < M; ++a)
+    // {
+    //     cin >> i >> j >> k;
+
+    //     for (int b = 1; b < N + 1; ++b)
+    //     {
+    //         busketsTEMP[b] = buskets[b];
+    //     }
+
+    //     for (int c = i; c <= j; ++c)
+    //     {
+    //         buskets[c] = busketsTEMP[i + (k + c - 2 * i) % (j - i + 1)];
+    //     }
+    // }
+
+    // for(int d = 1; d < N + 1; ++d){
+    //     cout << buskets[d] << " ";
+    // }
+
+    //sol2: #include <algorithm> rotate()를 이용한 간단 구현
+    int n, m; cin >> n >> m; vector<int> v;
+
+    for(int i = 1; i <= n; ++i){
+        v.push_back(i);
     }
 
-    for(int i1 = 0; i1 < M; ++i1){
-        cin >> i >> j >> k;
+    while(m--){
+        int i, j, k; cin >> i >> j >> k;
 
-        int* arr2 = new int[N + 1];
-
-        for(int i = 1; i <= N; ++i){
-            arr2[i] = arr[i];
-        }
-
-        int count = 0;
-        
-        for(int i2 = i; i2 <= j; ++i2){
-            arr[i2] = arr2[(k + count) % (j - i + 1)];
-
-            count++;
-        }
+        //범위 (i - 1) ~ (j - 1)
+        //시작 값은 k번째 값으로 변경 & rotateion
+        //왼쪽으로
+        rotate(v.begin() + (i-1), v.begin() + (k-1), v.end() + j);
     }
 
-    for(int i = 0; i < N; ++i){
-        cout << arr[i] << " ";
-    }
+    for(int a : v)
+        cout << a << " ";
+
+    cout << "\n";
 
     return 0;
 }
