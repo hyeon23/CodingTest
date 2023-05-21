@@ -36,7 +36,6 @@ int main()
             }
             else
             {
-                // year의 e에서 걸림 왜???
                 if (str[j] != str[j - 1] && alphaArr[str[j] - 97])
                 {
                     flag = false;
