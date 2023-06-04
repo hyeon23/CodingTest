@@ -1,10 +1,7 @@
-#include <iostream>
+std::map<std::string, double> pitcher_list;
 
-template <typename Int, typename... Ints>
-Int diff_from(Int start, Ints...  nums){
-    return (start - ... - nums);
-}
+pitcher_list.insert(std::pair<std::string, double>("박세웅", 123.4));
 
-int main(){
-    std::cout << diff_from(100, 1, 4, 2, 3, 10) << std::endl;
-}
+pitcher_list.insert(std::makepair("박세웅", 123.4));
+
+pitcher_list["박세웅"] = 123.4;
