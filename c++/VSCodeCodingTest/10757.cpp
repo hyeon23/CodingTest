@@ -1,103 +1,52 @@
-#include <iostream>
-#include <vector>
-#include <string>
-
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<string>
 using namespace std;
+
+int N, sum;
+int num1[10001], num2[10001];
+string s1, s2, tmp;
+vector<int> ans;
 
 int main()
 {
-    // 메모리도, 시간제한도 맞지만 틀린답이랜다...이유: 고작 10^19까지 밖에 표현할 수 없음
-    //  unsigned long long A, B;
-    //  cin >> A >> B;
-    //  cout << A + B;
-    // 완전 다른 방식을 찾아야 함
-    string A, B, S;
-    cin >> A >> B;
-    int carry = 0;
+	cin >> s1 >> s2;
 
-    int smallLen;
+	// 더 긴 수를 s1으로 저장하기
+	if (s1.size() < s2.size())
+	{
+		tmp = s1;
+		s1 = s2;
+		s2 = tmp;
+	}
+	
+	// num1, num2 배열을 만드는 과정
+	for (int i = 0; i < s1.size(); i++)
+		num1[i + 1] = s1[i] - '0';
 
-    if (A.length() < B.length())
-    {
-        smallLen = A.length();
-        S = B;
-    }
-    else if (A.length() == B.length())
-    {
-        smallLen = A.length();
-        S = A;
-    }
-    else
-    {
-        smallLen = B.length();
-        S = A;
-    }
+	for (int i = 0; i < s2.size(); i++)
+		num2[i + 1 + (s1.size()-s2.size())] = s2[i] - '0';
 
-    for (int i = 0; i < smallLen + 1; ++i)
-    {
-        if (A.length() < B.length())
-        {
-            if (i == smallLen)
-            {
-                if (carry != 0)
-                
-                {
-                    S[S.length() - 1 - i] = (char)((int)(B[B.length() - 1 - i] - '0') + carry);
-                    cout << "cS"  << carry << S;
-                }
-                else
-                {
-                    cout << "S" << S;
-                }
-            }
-            else
-            {
-                S[S.length() - 1 - i] = (char)((int)((A[A.length() - 1 - i] - '0') + (B[B.length() - 1 - i] - '0') + carry) % 10);
-                carry = (int)((A[A.length() - 1 - i] - '0') + (B[B.length() - 1 - i] - '0') + carry) / 10;
-            }
-        }
-        else if (A.length() == B.length())
-        {
-            if (i == smallLen)
-            {
-                if (carry != 0)
-                {
-                    S[S.length() - 1 - i] = ((A[A.length() - 1 - i] - '0') + (B[B.length() - 1 - i] - '0') + carry) % 10;
-                    cout << carry << S;
-                }
-                else
-                {
-                    cout << S;
-                }
-            }
-            else
-            {
-                S[S.length() - 1 - i] = ((A[A.length() - 1 - i] - '0') + (B[B.length() - 1 - i] - '0') + carry) % 10;
-                carry = (A[A.length() - 1 - i] - '0' + B[B.length() - 1 - i] - '0' + carry) / 10;
-            }
-        }
-        else
-        {
-            if (i == smallLen)
-            {
-                if (carry != 0)
-                {
-                    S[S.length() - 1 - i] = ((A[A.length() - 1 - i] - '0') + carry);
-                    cout << carry << S;
-                }
-                else
-                {
-                    cout << S;
-                }
-            }
-            else
-            {
-                S[S.length() - 1 - i] = ((A[A.length() - 1 - i] - '0') + (B[B.length() - 1 - i] - '0') + carry) % 10;
-                carry = (A[A.length() - 1 - i] - '0' + B[B.length() - 1 - i] - '0' + carry) / 10;
-            }
-        }
-        cout << carry << endl;
-    }
+	// num배열들의 끝부분부터 덧셈을 하면서 ans벡터에 값 저장
+	for (int i = s1.size(); i > 0; i--)
+	{
+		sum = num1[i] + num2[i];
+		if (sum >= 10)
+		{
+			num1[i - 1]++;
+			sum -= 10;
+		}
+		ans.push_back(sum);
+	}
 
-    return 0;
+	// 맨 앞자리수 출력
+	if (num1[0] != 0) cout << 1;
+
+	// ans벡터 거꾸로 출력
+	for (int i = ans.size() - 1; i >= 0; i--)
+	{
+		cout << ans[i];
+	}
+
 }

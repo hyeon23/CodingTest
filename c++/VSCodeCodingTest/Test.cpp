@@ -1,7 +1,13 @@
-std::map<std::string, double> pitcher_list;
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-pitcher_list.insert(std::pair<std::string, double>("박세웅", 123.4));
+using namespace std;
 
-pitcher_list.insert(std::makepair("박세웅", 123.4));
+int main(){
+    vector<int> vec = {1,3,5,5,7,8,8,10,10,11,13};
 
-pitcher_list["박세웅"] = 123.4;
+    sort(vec.begin(), vec.end());
+
+    cout << "5의 갯수 : " << upper_bound(vec.begin(), vec.end(), 5) - lower_bound(vec.begin(), vec.end(), 5);
+}
