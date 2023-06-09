@@ -52,9 +52,9 @@ int main()
         int i, j, k; cin >> i >> j >> k;
 
         //범위 (i - 1) ~ (j - 1)
-        //시작 값은 k번째 값으로 변경 & rotateion
+        //시작 값은 k번째 값으로 변경 & rotation
         //왼쪽으로
-        rotate(v.begin() + (i-1), v.begin() + (k-1), v.end() + j);
+        rotate(v.begin() + (i-1), v.begin() + (k-1), v.begin() + j);
     }
 
     for(int a : v)

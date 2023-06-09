@@ -12,7 +12,6 @@ vector<int> ans;
 int main()
 {
 	cin >> s1 >> s2;
-
 	// 더 긴 수를 s1으로 저장하기
 	if (s1.size() < s2.size())
 	{
@@ -20,7 +19,6 @@ int main()
 		s1 = s2;
 		s2 = tmp;
 	}
-	
 	// num1, num2 배열을 만드는 과정
 	for (int i = 0; i < s1.size(); i++)
 		num1[i + 1] = s1[i] - '0';

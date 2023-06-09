@@ -28,11 +28,6 @@ int main()
 
     if((V - A) % (A - B) != 0)
         day+= 1;
-
-    //있어도 되고, 없어도 되는 문장이였음
-    // if(A >= V)
-    //     cout << "1";
-    // else
-    //     cout << day;
+        
     cout << day;
 }
