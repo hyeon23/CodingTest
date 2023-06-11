@@ -1,3 +1,4 @@
+#include <vector>
 #include <iostream>
 using namespace std;
 
@@ -8,7 +9,7 @@ int main(){
     int coins[4] = {25, 10, 5, 1};
 
     cin >> T;
-    int arr[T][4] = {};
+    vector<vector<int>> vec(T, vector<int>(4));
 
     for(int i = 0; i < T; ++i){
         cin >> C;//센트
@@ -16,14 +17,14 @@ int main(){
         for(int j = 0; j < 4; ++j){
             if(j != 3){
                 if(C >= coins[j]){
-                    arr[i][j] = C / coins[j];
+                    vec[i][j] = C / coins[j];
                     C = C % coins[j];
                 }
             }
             else{
-                arr[i][j] = C;
+                vec[i][j] = C;
             }
-            cout << arr[i][j] << " ";
+            cout << vec[i][j] << " ";
         }
         cout << "\n";
     }

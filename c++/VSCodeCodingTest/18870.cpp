@@ -28,5 +28,7 @@ int main(){
         
         cout << iter - cvec.begin() << ' ';
     }
+
+    
     return 0;
 }

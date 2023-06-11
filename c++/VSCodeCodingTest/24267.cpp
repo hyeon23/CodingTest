@@ -11,7 +11,6 @@ using namespace std;
 
 //sol2) 
 
-
 // MenOfPassion(A[], n) {
 //     sum <- 0;
 //     for i <- 1 to n - 2
