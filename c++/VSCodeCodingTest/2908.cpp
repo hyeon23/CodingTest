@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <string>
 
@@ -10,9 +11,8 @@ int main()
     cin >> A >> B;
 
     int answer;
-
-    swap(A[0], A[2]);
-    swap(B[0], B[2]);
+    reverse(A.begin(), A.end());
+    reverse(B.begin(), B.end());
 
     answer = max(stoi(A), stoi(B));
 

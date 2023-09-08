@@ -20,11 +20,10 @@ int main(){
 //sol2: set ver / #include <string> 미사용 Ver
 int main() {
     string s;
-    cin >> s;
- 
     set<string> set;
- 
+    cin >> s;
     string str = "";
+
     for (int i = 0; i < s.size(); i++) {
         for (int j = i; j < s.size(); j++) {
             str += s[j];

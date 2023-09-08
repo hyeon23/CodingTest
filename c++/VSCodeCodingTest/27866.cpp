@@ -12,7 +12,9 @@ int main(){
 
     // cout << S[i-1];
 
+
     //sol2
+    
     char s[1001];
     int i;
 
