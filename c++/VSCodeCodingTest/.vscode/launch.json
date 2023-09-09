@@ -8,11 +8,11 @@
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "C:/Tools/mysys64/mingw64/bin",
+            "cwd": "C:/Tools/mysys64/MINGW/bin",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:\\Tools\\mysys64\\mingw64\\bin\\gdb.exe",
+            "miDebuggerPath": "C:\\Tools\\mysys64\\MINGW\\bin\\gdb.exe",
             "setupCommands": [
                 {
                     "description": "gdb에 자동 서식 지정 사용",
