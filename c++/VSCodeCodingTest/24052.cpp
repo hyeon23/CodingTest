@@ -3,7 +3,7 @@ using namespace std;
 
 int N, K;
 
-int insertion_sort(vector<int>& vec){
+bool insertion_sort(vector<int>& vec){
     int cnt = 0;
     for(int i = 1; i <= vec.size() - 1; ++i){
         int loc = i - 1;
@@ -11,18 +11,18 @@ int insertion_sort(vector<int>& vec){
 
         while(0 <= loc && newItem < vec[loc]){
             cnt++;
-            if(cnt == K) return vec[loc];
             vec[loc + 1] = vec[loc];
             loc--;
+            if(cnt == K) return true;
         }
 
         if(loc + 1 != i){
             cnt++;
-            if(cnt == K) return newItem;
             vec[loc + 1] = newItem;
+            if(cnt == K) return true;
         }
     }
-    return -1;
+    return false;
 }
 
 int main(){
@@ -32,6 +32,15 @@ int main(){
         cin >> vec[i];
     }
 
-    cout << insertion_sort(vec);
+    if(insertion_sort(vec)){
+        for(int i = 0; i < N; ++i){
+            cout << vec[i] << ' ';
+        }
+    }
+    else{
+        cout << -1;
+    }
+    
+
     return 0;
 }
