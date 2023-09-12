@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "configurations": [
+        {
+            "name": "g++.exe - 활성 파일 빌드 및 디버그",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "C:/Tools/mysys64/MINGW/bin",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\Tools\\mysys64\\MINGW\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "gdb에 자동 서식 지정 사용",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+          	// tasks.json에서 설정한 빌드 task의 label
+            "preLaunchTask": "C/C++: g++.exe 활성 파일 빌드"
+        }
+    ]
+}
