@@ -2,22 +2,25 @@
 using namespace std;
 
 int main(){
-    int N;
-    cin >> N;
+    int N, M;
+    cin >> N >> M;
     vector<int> vec(N);
     for(int i = 0; i < N; ++i){
         cin >> vec[i];
     }
+
     sort(vec.begin(), vec.end());
 
-    int offset = 0;
-    int ans = 0;
+    int cnt = 0;
 
     for(int i = 0; i < vec.size(); ++i){
-        offset += vec[i];
-        ans += offset;
+        for(int j = i+1; j < vec.size(); ++j){
+            if(vec[i] + vec[j] == M){
+                cnt++;
+                break;
+            }
+        }
     }
-
-    cout << ans;
+    cout << cnt;
     return 0;
 }
