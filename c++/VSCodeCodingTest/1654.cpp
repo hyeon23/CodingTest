@@ -1,24 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-    int K, N, len;
-    cin >> K >> N;
+int K, N, ans;
+int maxi = 0;
+long long mid, high, low;
 
-    vector<int> lens(K);
+int main()
+{
+    vector<int> line(10001);
 
-    for(int i = 0; i < K; ++i){
-        cin >> lens[i];
-    }
+	cin >> K >> N;
+	
+	for (int i = 0; i < K; i++)
+	{
+		cin >> line[i];
+        maxi = max(maxi, line[i]);
+	}
 
-    sort(lens.begin(), lens.end());
+	low = 1;
+	high = maxi;
+	ans = 0;
 
-    int sum = accumulate(lens.begin(), lens.end(), 0) / N;
+	while (low <= high)
+	{
+		mid = (low + high) / 2;
+		int cnt = 0;
+		for (int i = 0; i < K; i++)
+			cnt += line[i] / mid;
 
-
-
-
-    return 0;
+		if (cnt >= N) {
+			low = mid + 1;
+			if (ans < mid) ans = mid;
+		}
+		else {// (cnt < N)
+			high = mid - 1;
+		}
+	}
+	
+	cout << ans;
 }
