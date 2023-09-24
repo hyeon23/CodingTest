@@ -1,33 +1,55 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-int main() {
-    int n, m, b;
-    int map[500][500];
-    int leastTime = 0x7f7f7f7f;
-    int mostHeight;
-    cin >> n >> m >> b;
-	for (int i = 0; i < n; i++) 
-		for (int j = 0; j < m; j++) 
-			cin >> map[i][j];
 
-	for (int h = 0; h <= 256; h++) {
-		int build = 0;
-		int remove = 0;
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				int height = map[i][j] - h;
-				if (height > 0) remove += height;
-				else if (height < 0) build -= height;
+int main(){
+	ios_base::sync_with_stdio(0);
+	cin.tie(0); cout.tie(0);
+
+	int N, M, B;
+
+
+	cin >> N >> M >> B;
+
+	int arr[N][M];
+	
+	int mn = 257;
+	int mx = -1;
+
+	for(int i = 0; i < N; ++i){
+		for(int j = 0; j < M; ++j){
+			cin >> arr[i][j];
+			mn = min(mn, arr[i][j]);
+			mx = max(mx, arr[i][j]);
+		}
+	}
+
+	int anst = 1e9;
+	int ansh = -1;
+
+	for(int i = mn; i <= mx; ++i){//제일 낮은 층수 to 제일 높은 층수
+		long long t = 0;
+		int add = 0;
+		int sub = 0;
+
+		for(int j = 0; j < N; ++j){
+			for(int k = 0; k < M; ++k){
+				int block = i - arr[j][k];
+
+				if(block < 0) sub += abs(block);
+				else add += block;
 			}
 		}
-		//지울것 + 인벤토리 블록 >= 채울것
-		if (remove + b >= build) {
-			int time = remove * 2 + build;
-			if (leastTime >= time) {
-				leastTime = time;
-				mostHeight = h;
+
+		if(add <= sub + B){
+			t = add + sub * 2;
+			if(t <= anst){
+				anst = t;
+				ansh = i;
 			}
 		}
 	}
-    cout << leastTime << ' ' << mostHeight <<'\n';
+
+	cout << anst << " " << ansh;
+
+	return 0;
 }
