@@ -1,46 +1,53 @@
-#include <string>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int solution(int m, int n, vector<string> board) {
-    int answer = 0;
+struct cmp{
+    bool operator() (pair<int, int> A, pair<int, int> B){
+        if(A.second == B.second)
+            return A.first > B.first;
+        return A.second < B.second;
+    }
+};
 
-    while(1){
-        bool isDone = true;
-        vector<vector<bool>> check(m, vector<bool>(n, false));
-        
-        for(int i=0;i<m-1;i++){
-            for(int j=0;j<n-1;j++){
-                if(board[i][j] == 0) continue;
-                if(board[i][j] == board[i][j+1]){
-                    char target = board[i][j];
-                    if((board[i+1][j] == target) && (board[i+1][j+1] == target)){
-                        check[i][j] = true;
-                        check[i][j+1] = true;
-                        check[i+1][j] = true;
-                        check[i+1][j+1] = true;
-                        isDone = false;
-                    }
-                }
-            }
-        }
+struct cmpmap{
+    bool operator() (int A, int B){
+        return A < B;
+    }
+};
 
-        if(isDone == true) break;
+int main(){
+    priority_queue<pair<int, int>, vector<pair<int, int>>, cmp> pq;
+    //, vector<pair<int, int>, cmp>
 
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                if(check[i][j] == true){
-                    answer++;
+    pq.push({1, 2});
+    pq.push({2, 3});
+    pq.push({3, 4});
+    pq.push({4, 5});
+    pq.push({1, 5});
+    pq.push({5, 5});
+    pq.push({5, 6});
 
-                    for(int k=i;k>0;k--){
-                        board[k][j] = board[k-1][j];
-                    }
-                    board[0][j] = 0;
-                }
-            }
-        }
+    while(!pq.empty()){
+        pair<int, int> fr = pq.top();
+        cout << fr.first << ' ' << fr.second << '\n';
+        pq.pop();
     }
 
-    return answer;
+    cout << '\n';
+
+    map<int, int, cmpmap> m;
+
+    m[1] = 100000;
+    m[2] = 2;
+    m[3] = 500;
+    m[4] = 4;
+    m[5] = 300;
+    m[6] = 5;
+    m[7] = 100;
+
+    for(auto it = m.begin(); it != m.end(); ++it){
+        cout << it->first << ' ' << it->second << '\n';
+    }
+
+    return 0;
 }
