@@ -1,79 +1,65 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool cmp(pair<string, int> A, pair<string, int> B){
-    if(A.second == B.second){
-        return A.first < B.first;
-    }
-    return A.second > B.second;
+bool cmp(pair<string, int> p1, pair<string, int> p2){
+    if(p1.second == p2.second)
+        return p1.first < p2.first;
+    return p1.second > p2.second;
 }
 
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-    int N;
-    string mj, str;
-    cin >> mj;
+    int L, O, V, E, N;
 
-    vector<int> mjcnt(mj.size(), 0);
-    //mj의 L, O, V, E 숫자 카운팅
+    string yun;
 
-    for(int i = 0; i < mj.size(); ++i){
-        if(mj[i] == 'L'){
-            mjcnt[0]++;
+    cin >> yun;
+
+    for(int i = 0; i < yun.size(); ++i){
+        if(yun[i] == 'L'){
+            L++;
         }
-        else if(mj[i] == 'O'){
-            mjcnt[1]++;
+        else if(yun[i] == 'O'){
+            O++;
         }
-        else if(mj[i] == 'V'){
-            mjcnt[2]++;
+        else if(yun[i] == 'V'){
+            V++;
         }
-        else if(mj[i] == 'E'){
-            mjcnt[3]++;
+        else if(yun[i] == 'E'){
+            E++;
         }
     }
-
 
     cin >> N;
-    vector<pair<string, long long>> ans(N);
+
+    vector<pair<string, int>> pvec;
 
     for(int i = 0; i < N; ++i){
-        cin >> str;//세는 단어
-        vector<int> strcnt(str.size(), 0);
+        int Lcnt = L;
+        int Ocnt = O;
+        int Vcnt = V;
+        int Ecnt = E;
 
-        for(int j = 0; j < str.size(); ++j){
-            if(str[j] == 'L'){
-                strcnt[0]++;
+        string curName;
+        cin >> curName;
+
+        for(int j = 0; j < curName.size(); ++j){
+            if(curName[i] == 'L'){
+                Lcnt++;
             }
-            else if(str[j] == 'O'){
-                strcnt[1]++;
+            else if(curName[i] == 'O'){
+                Ocnt++;
             }
-            else if(str[j] == 'V'){
-                strcnt[2]++;
+            else if(curName[i] == 'V'){
+                Vcnt++;
             }
-            else if(str[j] == 'E'){
-                strcnt[3]++;
-            }
-        }
-
-        vector<int> tmp(4, 0);
-
-        for(int j = 0; j < 4; ++j){
-            tmp[j] = (mjcnt[j] + strcnt[j]);
-        }
-
-        long long sum = 1;
-
-        for(int j = 0; j < 4; ++j){
-            for(int k = j + 1; k < 4; ++k){
-                sum *= (tmp[j] + tmp[k]);
+            else if(curName[i] == 'E'){
+                Ecnt++;
             }
         }
-
-        ans[i] = {str, sum % 100};
+        pvec.push_back({curName, (((Lcnt + Ocnt) % 100) * ((Lcnt + Vcnt) % 100) * ((Lcnt + Ecnt) % 100) * ((Ocnt + Vcnt) % 100) * ((Ocnt + Ecnt) % 100) * ((Vcnt + Ecnt) % 100)) % 100});
     }
 
-    sort(ans.begin(), ans.end(), cmp);
+    sort(pvec.begin(), pvec.end(), cmp);
 
-    cout << ans[0].first;
+    cout << pvec[0].first;
 }
