@@ -8,5 +8,6 @@ int main(){
     cout << "tomerge" << '\n';
     cout << "torebase" << '\n';
     cout << "origin commit" << '\n';
+    cout << "copy" << '\n';
     return 0;
 }
