@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
+//tmp
 
 int main(){
     //해시함수 -> 자료의 저장과 탐색에 쓰임
-    int L;
+    int L, r, k;
     cin >> L;
 
     string str;
