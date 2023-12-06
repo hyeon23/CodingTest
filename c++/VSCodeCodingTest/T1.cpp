@@ -7,5 +7,6 @@ int main(){
     cout << "main" << '\n';
     cout << "tomerge" << '\n';
     cout << "torebase" << '\n';
+    cout << "copy" << '\n';
     return 0;
 }
