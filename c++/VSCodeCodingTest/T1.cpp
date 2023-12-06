@@ -6,5 +6,6 @@ int main(){
     cout << "sub2" << '\n';
     cout << "main" << '\n';
     cout << "tomerge" << '\n';
+    cout << "torebase" << '\n';
     return 0;
 }
