@@ -27,6 +27,16 @@ void N_Queen(int x){//N_Queen = 퀸 배치
     }
 }
 
+void N_Queen(int x){
+    if(x == N) ++total;
+    else{
+        for(int i = 0; i < N; ++i){
+            col[x] = i;
+            if(check(x)) N_Queen(x+1);
+        }
+    }
+}
+
 int main(){
     cin >> N;
     N_Queen(0);

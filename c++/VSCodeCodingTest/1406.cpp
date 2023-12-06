@@ -89,16 +89,8 @@ int main()
         char cmd, c;
         cin >> cmd;
 
-        if (cmd == 'L')
-        {
-            if (cursor != li.begin())
-                cursor--;
-        }
-        else if (cmd == 'D')
-        {
-            if (cursor != li.end())
-                cursor++;
-        }
+        if (cmd == 'L') if (cursor != li.begin()) cursor--;
+        else if (cmd == 'D') if (cursor != li.end()) cursor++;
         else if (cmd == 'B')
         {
             if (cursor != li.begin()) // 맨 왼쪽이 아니라면

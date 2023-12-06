@@ -1,54 +1,38 @@
 #include <bits/stdc++.h>
+#define MAX 16
 using namespace std;
 
+int getDist(string a, string b, string c){
+    int dist = 0;
+    for(int i = 0; i < a.size(); ++i){
+        dist += (a[i] != b[i]) + (b[i] != c[i]) + (c[i] != a[i]);
+    }
+    return dist;
+}
+
+int solve(int N, vector<string> mbtis){
+    if(N > MAX * 2) return 0;
+
+    int answer = INT_MAX;
+    for(int i = 0; i < N; ++i)
+        for(int j = i+1; j < N; ++j)
+            for(int k = j+1; k < N; ++k)
+                answer = min(answer, getDist(mbtis[i], mbtis[j], mbtis[k]));
+
+    return answer;
+}
+
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+    int T;
+    cin >> T;
+    while(T--){
+        int N;
+        cin >> N;
+        vector<string> mbtis(N);
+        for(int i = 0; i < N; ++i)
+            cin >> mbtis[i];
 
-    int L;
-    cin >> L;
-    vector<int> vec(L);
-
-    bool trigger = false;
-
-    for(int i = 0; i < L; ++i) cin >> vec[i];
-
-    sort(vec.begin(), vec.end());
-
-    int n;
-
-    cin >> n;
-
-    for(int i = 0; i < L; ++i){
-        if(vec[i] == n){
-            trigger = true;
-            break;
-        }
+        cout << solve(N, mbtis) << '\n';
     }
-
-    if(trigger) cout << 0 << '\n';
-    else{
-        int start = 0;
-        int end = 0;
-
-        for(int i = 0; i < L; ++i){
-            if(vec[i] > n){
-                start = vec[i-1];
-                end = vec[i];
-                break;
-            }
-        }
-
-        int ans = 0;
-
-        for(int i = start+1; i < end; ++i){
-            for(int j = i+1; j < end; ++j){
-                if(i <= n && n <= j) ++ans;
-            }
-        }
-        cout << ans << '\n';
-    }
-
-
-
+    return 0;
 }
