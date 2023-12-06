@@ -11,7 +11,7 @@ int main(){
     cin >> str;
 
     long long sum = 0;
-
+    long long int a;
     for(long long i = 0; i < L; ++i){
         long long ai = (str[i] - 'a' + 1);
 
