@@ -1,85 +1,74 @@
-// #include <iostream>
-// #include <string>
-// #include <stack>
-// using namespace std;
-
-// int main()
-// {
-//     int M;
-//     string s = "";
-//     stack<char> left;//left는 커서 기준 왼쪽 원소
-//     stack<char> right;//right는 커서 기준 오른쪽 원소
-
-//     cin >> s;
-
-//     for (int i = 0; i < (int)s.size(); i++)
-//         left.push(s[i]);
-
-//     cin >> M;
-
-//     for (int i = 0; i < M; i++)
-//     {
-//         char cmd, c;
-//         cin >> cmd;
-
-//         if (cmd == 'L')
-//         {
-//             if (!left.empty())
-//             {
-//                 right.push(left.top());
-//                 left.pop();
-//             }
-//         }
-//         else if (cmd == 'D')
-//         {
-//             if (!right.empty())
-//             {
-//                 left.push(right.top());
-//                 right.pop();
-//             }
-//         }
-//         else if (cmd == 'B')
-//         {
-//             if (!left.empty())
-//                 left.pop();
-//         }
-//         else if (cmd == 'P')
-//         {
-//             cin >> c;
-//             left.push(c);
-//         }
-//     }
-
-//     // left에 있는 원소들 모두 right로 이동!
-//     while (!left.empty())
-//     {
-//         right.push(left.top());
-//         left.pop();
-//     }
-
-//     // right에 있는 원소 출력
-//     while (!right.empty())
-//     {
-//         cout << right.top();
-//         right.pop();
-//     }
-
-    //1. L, D, B, P 처리
-    //2. 왼쪽 -> 오른쪽 이동
-    //3. 출력
-// }
+#include <iostream>
+#include <string>
+#include <stack>
+using namespace std;
+int main()
+{
+    int M;
+    string s = "";
+    stack<char> left;//left는 커서 기준 왼쪽 원소
+    stack<char> right;//right는 커서 기준 오른쪽 원소
+    cin >> s;
+    for (int i = 0; i < (int)s.size(); i++)
+        left.push(s[i]);
+    cin >> M;
+    for (int i = 0; i < M; i++)
+    {
+        char cmd, c;
+        cin >> cmd;
+        if (cmd == 'L')
+        {
+            if (!left.empty())
+            {
+                right.push(left.top());
+                left.pop();
+            }
+        }
+        else if (cmd == 'D')
+        {
+            if (!right.empty())
+            {
+                left.push(right.top());
+                right.pop();
+            }
+        }
+        else if (cmd == 'B')
+        {
+            if (!left.empty())
+                left.pop();
+        }
+        else if (cmd == 'P')
+        {
+            cin >> c;
+            left.push(c);
+        }
+    }
+    // left에 있는 원소들 모두 right로 이동!
+    while (!left.empty())
+    {
+        right.push(left.top());
+        left.pop();
+    }
+    // right에 있는 원소 출력
+    while (!right.empty())
+    {
+        cout << right.top();
+        right.pop();
+    }
+    // 1. L, D, B, P 처리
+    // 2. 왼쪽 -> 오른쪽 이동
+    // 3. 출력
+}
 
 #include <iostream>
 #include <string>
 #include <list>
 using namespace std;
-
 int main()
 {
     int M;
     string s = "";
     string ans = "";
-
     cin >> s;
     // 연결리스트에 원소 할당
     list<char> li(s.begin(), s.end());
