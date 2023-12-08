@@ -10,7 +10,7 @@
             "stopAtEntry": false,
             "cwd": "C:/Tools/mysys64/MINGW/bin",
             "environment": [],
-            "externalConsole": false,
+            "externalConsole": true,
             "MIMode": "gdb",
             "miDebuggerPath": "C:\\Tools\\mysys64\\MINGW\\bin\\gdb.exe",
             "setupCommands": [
