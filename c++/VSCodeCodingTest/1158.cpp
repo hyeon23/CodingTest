@@ -24,7 +24,6 @@ int main(){
 
 // #include <bits/stdc++.h>
 // using namespace std;
-
 // int main(){
 //     int N, K;
 //     cin >> N >> K;
@@ -40,7 +39,6 @@ int main(){
 //             if(q.size() == 1) cout << q.back();
 //             else cout << q.back() << ", ";
 //             q.pop_back();
-
 //         }
 //         else{
 //             q.push_front(q.back());
