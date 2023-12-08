@@ -63,6 +63,10 @@
 //         cout << right.top();
 //         right.pop();
 //     }
+
+    //1. L, D, B, P 처리
+    //2. 왼쪽 -> 오른쪽 이동
+    //3. 출력
 // }
 
 #include <iostream>
