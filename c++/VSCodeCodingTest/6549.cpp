@@ -32,6 +32,7 @@ int main(void)
             ans = max(ans, (n - S.top().Y) * S.top().X);
             S.pop();
         }
+        // 2 1 4 5 1 3 3
         cout << ans << '\n';
     }
 }
