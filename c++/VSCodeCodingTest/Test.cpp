@@ -34,8 +34,8 @@ int main(){
         cin >> num;
         while(!deq.empty() && deq.back().second >= num) deq.pop_back();
         deq.push_back({i, num});
-        if(deq.front().first <= i - L) dq.pop_front();
-        cout << dq.front().second << ' ';
+        if(deq.front().first <= i - L) deq.pop_front();
+        cout << deq.front().second << ' ';
     }
     return 0;
 }
