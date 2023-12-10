@@ -1,38 +1,41 @@
+// #include <bits/stdc++.h>
+// using namespace std;
+// priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+// int main(){
+//     ios::sync_with_stdio(0);
+//     cin.tie(0); cout.tie(0);
+//     int N, L;
+//     cin >> N >> L;
+//     int x, idx, cur;
+//     for(int i = 0; i < N; ++i){
+//         cin >> x;
+//         pq.push({x, i});
+//         cur = pq.top().first;
+//         idx = pq.top().second;
+//         while(idx < max(0, i - L + 1)){
+//             pq.pop();
+//             cur = pq.top().first;
+//             idx = pq.top().second;
+//         }
+//         cout << cur << ' ';
+//     }
+//     return 0;
+// }
+
 #include <bits/stdc++.h>
-#define MAX 16
 using namespace std;
-
-int getDist(string a, string b, string c){
-    int dist = 0;
-    for(int i = 0; i < a.size(); ++i){
-        dist += (a[i] != b[i]) + (b[i] != c[i]) + (c[i] != a[i]);
-    }
-    return dist;
-}
-
-int solve(int N, vector<string> mbtis){
-    if(N > MAX * 2) return 0;
-
-    int answer = INT_MAX;
-    for(int i = 0; i < N; ++i)
-        for(int j = i+1; j < N; ++j)
-            for(int k = j+1; k < N; ++k)
-                answer = min(answer, getDist(mbtis[i], mbtis[j], mbtis[k]));
-
-    return answer;
-}
-
+deque<pair<int, int>> deq;
 int main(){
-    int T;
-    cin >> T;
-    while(T--){
-        int N;
-        cin >> N;
-        vector<string> mbtis(N);
-        for(int i = 0; i < N; ++i)
-            cin >> mbtis[i];
-
-        cout << solve(N, mbtis) << '\n';
+    ios::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    int N, L, num;
+    cin >> N >> L;
+    for(int i = 0; i < N; ++i){
+        cin >> num;
+        while(!deq.empty() && deq.back().second >= num) deq.pop_back();
+        deq.push_back({i, num});
+        if(deq.front().first <= i - L) dq.pop_front();
+        cout << dq.front().second << ' ';
     }
     return 0;
 }
