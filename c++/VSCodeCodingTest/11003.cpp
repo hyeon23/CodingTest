@@ -4,17 +4,9 @@ using namespace std;
 int main(){
     int N, L, tmp;
     cin >> N >> L;
-    deque<int> dq;
-    deque<int> dq2;
+    deque<int> deq;
     for(int i = 0; i < N; ++i){
         cin >> tmp;
-    }
-
-    int f = dq.front();
-    dq.pop_front();
-
-    while(!dq.empty()){
-        
-        
+        deq.push_back(tmp);
     }
 }
