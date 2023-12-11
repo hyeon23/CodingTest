@@ -53,3 +53,7 @@ int main(){
     if(!check || !stk.empty()) cout << '0';
     else cout << sum;
 }
+
+// (()[[]])([])
+//12
+//4 + 18 + 6 = 28
