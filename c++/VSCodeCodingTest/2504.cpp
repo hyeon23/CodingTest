@@ -18,6 +18,10 @@ int main(){
             stk.push(s[i]);
             temp *= 2;
         }
+        else if(s[i] == '['){
+            stk.push(s[i]);
+            temp *= 3;
+        }
         else if(s[i] == ')'){
             if(stk.empty() || stk.top() != '('){
                 check = false;
@@ -30,10 +34,6 @@ int main(){
                 stk.pop();
                 temp /= 2;
             }
-        }
-        else if(s[i] == '['){
-            stk.push(s[i]);
-            temp *= 3;
         }
         else if(s[i] == ']'){
             if(stk.empty() || stk.top() != '['){
@@ -49,7 +49,6 @@ int main(){
             }
         }
     }
-
     if(!check || !stk.empty()) cout << '0';
     else cout << sum;
 }
