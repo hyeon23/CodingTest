@@ -18,13 +18,29 @@ void bfs(int cur){
             cout << dot[cx];
             return;
         }
+        int nx;
+        //+1이동
+        nx = cx + 1;
+        if(nx < 0 || nx >= 100001) continue;
+        if(dot[nx] == 1) continue;
+        dot[nx] = 1;
 
-        for(int i = 0; i < 2; ++i){
-            int nx = cx + dx[i];
+        //-1이동
+        nx = cx - 1;
+        if(nx < 0 || nx >= 100001) continue;
+        if(dot[nx] == 1) continue;
+        dot[nx] = 1;
 
-            if(nx < 0 || nx >= 100001) continue;
-            if(dot[nx] == 1) continue;
-        }
+        //순간이동
+        nx = cx * 2;
+        if(nx < 0 || nx >= 100001) continue;
+        if(dot[nx] == 1) continue;
+        dot[nx] = 1;
+        
+        if(nx < 0 || nx >= 100001) continue;
+        if(dot[nx] == 1) continue;
+        dot[nx] = 1;
+        
     }
     return;
 }
