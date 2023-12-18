@@ -86,7 +86,6 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-
 int n, m, k;
 string board[1001];
 // x, y, 부순 횟수, 낮/밤 여부(낮 = 0, 밤 = 1)
@@ -99,7 +98,6 @@ void input_opti()
     cin.tie(0);
     cout.tie(0);
 }
-
 bool bfs(){
     queue<tuple<int, int, int, int>> q;
     q.push({0, 0, 0, 0});
@@ -117,8 +115,7 @@ bool bfs(){
         {
             int nx = x + dx[dir];
             int ny = y + dy[dir];
-            if (nx < 0 || nx >= n || ny < 0 || ny >= m)
-                continue;
+            if (nx < 0 || ny < 0 || nx >= n || ny >= m) continue;
             // 만약 (nx, ny)가 빈 곳이라면 편하게 가면 된다.
             if (board[nx][ny] == '0')
             {
@@ -133,15 +130,13 @@ bool bfs(){
             else
             {
                 // 이미 k번 깼으면 더 깰 수 없다.
-                if (w == k)
-                    continue;
+                if (w == k) continue;
                 // 낮이라면 깨고 넘어가면 된다.
                 if (t == 0)
                 {
                     int nw = w + 1;
                     int nt = 1 - t;
-                    if (dist[nx][ny][nw][nt] > 0)
-                        continue;
+                    if (dist[nx][ny][nw][nt] > 0) continue;
                     dist[nx][ny][nw][nt] = dist[x][y][w][t] + 1;
                     q.push({nx, ny, nw, nt});
                 }
@@ -150,8 +145,7 @@ bool bfs(){
                 else
                 {
                     int nt = 1 - t;
-                    if (dist[x][y][w][nt] > 0)
-                        continue;
+                    if (dist[x][y][w][nt] > 0) continue;
                     dist[x][y][w][nt] = dist[x][y][w][t] + 1;
                     q.push({x, y, w, nt});
                 }
@@ -162,7 +156,6 @@ bool bfs(){
 }
 int main(void)
 {
-    //입력 최적화
     input_opti();
     cin >> n >> m >> k;
     for (int i = 0; i < n; i++) cin >> board[i];
