@@ -16,7 +16,29 @@ void bfs(){
         }
     }
     while(true){
-        
+        bool success = false;
+        for(int i = 1; i <= p; ++i){
+            int s_len = s[i];
+            while(!Q[i].empty() && s_len--){
+                int Q_size = Q[i].size();
+                for(int j = 0; j < Q_size; ++j){
+                    auto cur = Q[i].front();
+                    Q[i].pop();
+                    for(int dir = 0; dir < 4; ++dir){
+                        int nx = cur.first + dx[dir];
+                        int ny = cur.second + dy[dir];
+                        if(nx < 0 || ny < 0 || nx >= n || ny >= m) continue;
+                        if(board[nx][ny] == '.'){
+                            Q[i].push({nx, ny});
+                            board[nx][ny] = board[cur.first][cur.second];
+                            ans[i]++;
+                            success = true;
+                        }
+                    }
+                }
+            }
+        }
+        if(!success) break;
     }
 }
 int main(){
