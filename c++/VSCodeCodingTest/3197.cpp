@@ -119,10 +119,8 @@ int dx[4] = {1, 0, -1, 0};
 int dy[4] = {0, 1, 0, -1};
 int visited[1501][1501];
 char lake[1501][1501];
-
 vector<pair<int, int>> swanpos;
 queue<pair<int, int>> swanQ, waterQ;
-
 bool check_meet(){
     queue<pair<int, int>> tmp;
     //백조 시작점에서 BFS 출발
@@ -148,7 +146,8 @@ bool check_meet(){
 }
 //모든 물 BFS 탐색
 void melt_ice(){
-    for(int i = 0; i < waterQ.size(); ++i){
+    int wsize = waterQ.size();
+    for(int i = 0; i < wsize; ++i){
         int x = waterQ.front().first;
         int y = waterQ.front().second;
         waterQ.pop();
@@ -164,17 +163,14 @@ void melt_ice(){
     }
 }
 int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
     cin >> r >> c;
-    for(int i = 0; i < 4; ++i){
+    for(int i = 0; i < r; ++i){
         for(int j = 0; j < c; ++j){
             cin >> lake[i][j];
-            if(lake[i][j] == 'L'){
-                waterQ.push({i, j});
-                swanpos.push_back({i, j});
-            }
-            else if(lake[i][j] == '.') {
-                waterQ.push({i, j});
-            }
+            if(lake[i][j] == 'L') waterQ.push({i, j}), swanpos.push_back({i, j});
+            if(lake[i][j] == '.') waterQ.push({i, j});
         }
     }
     swanQ.push({swanpos[0].first, swanpos[0].second});
