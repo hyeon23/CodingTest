@@ -7,6 +7,7 @@ vector<pair<int, int>> adj[101][101];
 int dx[4] = {1, 0, -1, 0};
 int dy[4] = {0, 1, 0, -1};
 bool is_connected(pair<int, int> next){//(1, 1)에서 next가 도달 가능한 칸인가?
+    //4 방향 탐색 시, 방문한 지역이 있다면 = 연결됨 = (1, 1)d에서 next 도달 가능
     for(int i = 0; i < 4; ++i){
         int nx = next.first + dx[i];
         int ny = next.second + dy[i];
