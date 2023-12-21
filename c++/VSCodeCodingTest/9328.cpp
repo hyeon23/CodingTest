@@ -11,8 +11,9 @@ bool is_connected(int x, int y){
     for(int i = 0; i < 4; ++i){
         int nx = x + dx[i];
         int ny = y + dy[i];
-        if(nx < 0 || ny < 0 || nx >= h || ny >= w) continue;
-        if(visited[nx][ny]) return true;
+        //가장자리에 다시 한번 문이 있을 경우
+        if(nx < -1 || ny < -1 || nx > h || ny > w) continue;
+        if(visited[nx][ny] || nx == 0 || ny == 0 || nx == h || ny == w) return true;
     }
     return false;
 }
@@ -26,6 +27,7 @@ void bfs(int x, int y){
         //.가 있는 경우 -> 방문 처리 후 bfs 탐색
         // if(board[cur.first][cur.second] == '.'){
         // }
+
         //문서의 경우
         if(board[cur.first][cur.second] == '$'){
             ++ans;
@@ -84,6 +86,7 @@ int main(){
                 visited[i][j] = false;
 
         ans = 0;
+        
         cin >> h >> w;
         for(int i = 0; i < h; ++i){
             cin >> tmp;//. = 빈공간 / * = 벽(이동불가) / $ = '훔처야 하는 문서' / 대문자 = 문 / 소문자 = 열쇠
