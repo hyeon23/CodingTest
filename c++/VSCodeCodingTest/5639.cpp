@@ -12,7 +12,9 @@ void postOrder(int start, int end){
         if(tree[start] < tree[idx]) break;
         idx++;
     }
-
+    postOrder(start+1, idx);
+    postOrder(idx, end);
+    cout << tree[start] << '\n';
 }
 int main(){
     ios::sync_with_stdio(0);
