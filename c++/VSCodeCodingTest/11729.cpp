@@ -3,12 +3,16 @@
 
 using namespace std;
 
+void move(int start, int to){
+	cout << start << ' ' << to << '\n';
+}
+
 void hanoi(int n, int start, int to, int bypass){
 	if(n == 1)
-		cout << start << ' ' << to << '\n';
+		move(start, to);
 	else{
 		hanoi(n-1, start, bypass, to);
-		cout << start << ' ' << to << '\n';
+		move(start, to);
 		hanoi(n-1, bypass, to, start);
 	}
 }
