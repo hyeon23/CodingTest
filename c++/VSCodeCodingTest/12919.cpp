@@ -1,4 +1,4 @@
-//sol1(시간초과): S에 문자열을 추가해 T로 만드는 방법
+// //sol1(시간초과): S에 문자열을 추가해 T로 만드는 방법
 // #include <bits/stdc++.h>
 // using namespace std;
 // string S, T, RT;
