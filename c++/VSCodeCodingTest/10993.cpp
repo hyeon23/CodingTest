@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 vector<vector<char>> board(2048, vector<char>(2048, ' '));
-
 void recursion(int x, int y, int N){
     if(N == 1){
         board[x][y] = '*';
@@ -37,7 +36,6 @@ void recursion(int x, int y, int N){
     }
     return;
 }
-
 int main(){
     int N;
     cin >> N;
@@ -48,9 +46,7 @@ int main(){
     int width = pow(2, N+1) - 3;
     int height = pow(2, N) - 1;
     recursion(0, 0, N);
-
     //각 라인마다 마지막 별표가 오는 지점까지 출력
-    
     if(N % 2 == 0){
         for(int i = 0; i < height; ++i){
             for(int j = 0; j < width - i; ++j) cout << board[i][j];
