@@ -3,11 +3,15 @@ using namespace std;
 int k;
 string X, Y, Z;
 map<string, int> m;
+vector<bool> visited(18);
 void DFS(string str, int depth){
     if(depth == k){
 
     }
-    DFS(str, depth+1);
+    for(int i = 0; i < str.size(); ++i){
+        DFS(str, depth+1);
+    }
+    
 
 }
 int main(){
