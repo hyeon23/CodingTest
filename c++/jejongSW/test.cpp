@@ -151,5 +151,73 @@ vector<int> solution(vector<vector<int>> score){
 struct A{
     int a;
     int b;
-    public void A();
+    public void A();+++
 };
+
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+vector<int> solution(vector<int> emergency){
+    vector<int> answer;
+    for(const auto v : emergency){
+        int count = 0;
+        for(const auto v2 : emergency){
+            count += v2 > v;
+        }
+        answer.emplace_back(count+1);
+    }
+    return answer;
+}
+#include <string>
+#include <vector>
+#include <map>
+using namespace std;
+vector<int> solution(vector<int> emergency){
+    auto amt = map<int, int>();
+    for(auto& e : emergency) { amp[e]; }
+    auto order = amt.size();
+    for(auto& e : amt) { e.second = order--; }
+    for(auto& : emergency) { e = amt[e]; }
+    return emergency;
+}
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+vector<int> solution(vector<int> emergency){
+    vector<pair<int, int>> answer;
+    for(auto it = emergency.begin(); it != emergency.end(); ++it){
+        answer.push_back({*it, it - emergency.begin()});
+        sort(answer.begin(), answer.end(), greater<pair<int, int>>());
+        vector<int> order(answer.size(), 0);
+        for(int i = 0; i < answer.size(); ++i)
+            order[answer[i].second] = i+1;
+        return order;
+    }
+}
+
+#include <string>
+#include <vector>
+using namespace std;
+bool safe(vector<vector<int>> board, int x, int y){
+    for(int i = -1; i <= 1; ++i){
+        for(int j = -1; j <= 1; ++j){
+            if(x + j >= 0 && x + j <= board.size() - 1 && y + i >= 0 && y + i <= board.size() - 1){
+                if(board[y + i][x + j] == 1)
+                    return false;
+            }
+        }
+    }
+    return true;
+}
+int solution(vector<vector<int>> board) {
+    int answer = 0;
+    for(int i = 0; i < board.size(); ++i){
+        for(int j = 0; j < board[i].size(); ++j){
+            if(safe(board, j, i))
+                answer++;
+        }
+    }
+    return answer;
+}
