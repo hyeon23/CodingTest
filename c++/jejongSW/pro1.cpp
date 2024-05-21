@@ -26,5 +26,7 @@ vector<int> solution(vector<string> id_list, vector<string> report, int k) {
     vector<int> cnt(n), ret(n);
     for (const auto& [a, b] : v) cnt[b]++;
     for (const auto& [a, b] : v) if (cnt[b] >= k) ret[a]++;
+    
+
     return ret;
 }
