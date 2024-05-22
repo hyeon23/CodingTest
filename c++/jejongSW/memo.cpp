@@ -219,3 +219,17 @@ int main(){
     cout << total;
 }
 
+//우선순위 큐 우선순위 설정
+struct cmp{
+    //반대로 선언
+    bool operator()(int a, int b){
+        if(abs(a) == abs(b)) 
+            return a > b;
+        return abs(a) > abs(b);
+    }
+};
+
+
+int main(){
+    priority_queue<int, vector<int>, cmp> pq;
+}
